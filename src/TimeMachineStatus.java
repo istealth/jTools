@@ -61,9 +61,9 @@ public class TimeMachineStatus
     {
         int percent = 0;
 
+        String command = "tmutil status";
         //check if backup is running
-        String output = runCommand("tmutil status");
-        //String output = runCommand("cat /Users/stealth/tm4");
+        String output = runCommand(command);
         int running = output.indexOf("Running =");
         int isRunning = Integer.valueOf(output.substring(running + 10, running + 11));
 
@@ -77,8 +77,7 @@ public class TimeMachineStatus
                     e.printStackTrace();
                 }
 
-                String result = runCommand("tmutil status");
-                //String result = runCommand("cat /Users/stealth/tm2");
+                String result = runCommand(command);
                 String[] outputArray = result.split(";");
 
                 // get status
@@ -145,11 +144,10 @@ public class TimeMachineStatus
                         break;
                     }
                 }
-
             }
         }
 
-        output = runCommand("tmutil status");
+        output = runCommand(command);
         running = output.indexOf("Running =");
         isRunning = Integer.valueOf(output.substring(running + 10, running + 11));
 
@@ -162,8 +160,7 @@ public class TimeMachineStatus
             }
 
             // get status of TM
-            String result = runCommand("tmutil status");
-            //String result = runCommand("cat /Users/stealth/tm2");
+            String result = runCommand(command);
             String[] outputArray = result.split(";");
 
             for (String str : outputArray) {
@@ -176,7 +173,6 @@ public class TimeMachineStatus
                     if (backupPhase.compareTo("Finishing") == 0) {
                         progressBar.setString("Finishing");
                     }
-                    progressBar.setString(backupPhase);
                     break;
                 }
             }
