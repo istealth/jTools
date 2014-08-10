@@ -47,6 +47,7 @@ public class TimeMachineStatus
         content.add(progressBar, BorderLayout.NORTH);
         //content.add(statusLabel, BorderLayout.SOUTH);
         f.setUndecorated(true);
+        f.getRootPane().putClientProperty("Window.alpha", new Float(0.65f));
         f.setSize(270, 50);
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
