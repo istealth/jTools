@@ -41,14 +41,14 @@ public class TimeMachineStatus
         progressBar.setStringPainted(true);
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d 'at' HH:mm");
-        Border border = BorderFactory.createTitledBorder("Backup started on " + sdf.format(cal.getTime()));
+        Border border = BorderFactory.createTitledBorder("Started " + sdf.format(cal.getTime()));
         statusLabel = new JLabel("Status: ",JLabel.LEFT);
         progressBar.setBorder(border);
         content.add(progressBar, BorderLayout.NORTH);
         //content.add(statusLabel, BorderLayout.SOUTH);
         f.setUndecorated(true);
-        f.getRootPane().putClientProperty("Window.alpha", new Float(0.65f));
-        f.setSize(270, 50);
+        f.getRootPane().putClientProperty("Window.alpha", new Float(0.85f));
+        f.setSize(200, 50);
         Toolkit tk = Toolkit.getDefaultToolkit();
         Dimension screenSize = tk.getScreenSize();
         final int WIDTH = screenSize.width;
@@ -174,6 +174,10 @@ public class TimeMachineStatus
                     if (backupPhase.compareTo("Finishing") == 0) {
                         progressBar.setString("Finishing");
                     }
+                    if (backupPhase.compareTo("HealthCheckFsck") == 0) {
+                        progressBar.setString("Verifying Backup");
+                    }
+
                     break;
                 }
             }
